@@ -1,0 +1,70 @@
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+}
+
+.layout {
+  display: flex;
+  height: 100vh;
+}
+
+.sidebar {
+  width: 200px;
+  background: #111827;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+}
+
+.sidebar-link {
+  color: #9ca3af;
+  text-decoration: none;
+  padding: 8px;
+  border-radius: 4px;
+  margin-bottom: 4px;
+}
+
+.sidebar-link.active,
+.sidebar-link:hover {
+  background: #1f2937;
+  color: white;
+}
+
+.main {
+  flex: 1;
+  padding: 12px;
+  overflow-y: auto;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.login-page {
+  max-width: 320px;
+  margin: 80px auto;
+}
+
+.card {
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+input,
+select,
+button {
+  margin: 4px 0;
+  padding: 6px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.cart-item {
+  border-bottom: 1px solid #e5e7eb;
+  padding: 6px 0;
+}
