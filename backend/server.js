@@ -59,12 +59,12 @@ async function ensureAdminUser() {
 
 // Database connection
 mongoose
-  .connect("mongodb://127.0.0.1:27017/LRR")
+  .connect(process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/LRR")
   .then(async () => {
     console.log("MongoDB Connected");
     await ensureAdminUser();
   })
   .catch((err) => console.log(err));
 
-// Start server
-app.listen(5000, () => console.log("Server running on port 5000"));
+const PORT = process.env.PORT || 3001;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
