@@ -1,0 +1,35 @@
+services:
+  - type: web
+    name: pos-backend
+    env: node
+    plan: free
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: node server.js
+    envVars:
+      - key: PORT
+        value: 3001
+      - key: NODE_ENV
+        value: production
+      - key: MONGODB_URI
+        fromDatabase:
+          name: pos-db
+          property: connectionString
+
+  - type: web
+    name: pos-frontend
+    env: static
+    plan: free
+    rootDir: frontend
+    buildCommand: npm install && npm run build
+    publishDir: build
+    envVars:
+      - key: REACT_APP_API_URL
+        fromService:
+          name: pos-backend
+          type: web
+          property: host
+
+databases:
+  - name: pos-db
+    plan: free

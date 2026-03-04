@@ -57,9 +57,18 @@ A full-stack Point of Sale (POS) / store management system with an Arabic-langua
 - Barcode scanning support (via @zxing)
 - Arabic language interface (RTL)
 
-## Configuration Notes
+## Deployment to Render
 
-- Frontend uses `DANGEROUSLY_DISABLE_HOST_CHECK=true` for Replit proxy compatibility
-- Frontend is configured with `proxy: http://localhost:3001` for API calls
-- Backend uses MongoDB at `mongodb://127.0.0.1:27017/LRR`
-- The `models/` directory (lowercase) is a copy of `Models/` to fix case-sensitivity issues on Linux
+This project is prepared for deployment to Render using the `render.yaml` file.
+
+1. Connect your GitHub repository to Render.
+2. Render will automatically detect the `render.yaml` file.
+3. It will provision:
+   - A Managed PostgreSQL or MongoDB (Note: Update `render.yaml` if using a specific MongoDB provider like MongoDB Atlas, as Render's native database is PostgreSQL. The current `render.yaml` assumes a connection string environment variable).
+   - A Web Service for the Node.js backend.
+   - A Static Site for the React frontend.
+
+### Important:
+- The backend listens on port 3001.
+- The frontend `REACT_APP_API_URL` is automatically linked to the backend service.
+- Make sure to update the `MONGODB_URI` in Render's dashboard if using MongoDB Atlas.
